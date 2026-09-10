@@ -18,7 +18,6 @@ function App() {
     setMenuOpen(false);
   };
 
-
   /* =====================================
      TYPING ANIMATION
   ===================================== */
@@ -54,7 +53,6 @@ function App() {
     return () => clearTimeout(timeout);
   }, [typedName, isDeleting]);
 
-
   /* =====================================
      CONTACT FORM STATE
   ===================================== */
@@ -69,7 +67,6 @@ function App() {
   const [formStatus, setFormStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-
   /* =====================================
      CONTACT INPUT CHANGE
   ===================================== */
@@ -82,15 +79,10 @@ function App() {
       [name]: value,
     }));
 
-    /*
-      Remove previous success/error message
-      when the visitor starts typing again.
-    */
     if (formStatus) {
       setFormStatus("");
     }
   };
-
 
   /* =====================================
      NETLIFY CONTACT SUBMISSION
@@ -137,7 +129,6 @@ function App() {
     }
   };
 
-
   return (
     <div className="portfolio">
 
@@ -155,76 +146,45 @@ function App() {
           Mano<span>.</span>
         </a>
 
-
-        <ul
-          className={
-            menuOpen
-              ? "nav-links active"
-              : "nav-links"
-          }
-        >
+        <ul className={menuOpen ? "nav-links active" : "nav-links"}>
 
           <li>
-            <a
-              href="#home"
-              onClick={closeMenu}
-            >
+            <a href="#home" onClick={closeMenu}>
               Home
             </a>
           </li>
 
-
           <li>
-            <a
-              href="#about"
-              onClick={closeMenu}
-            >
+            <a href="#about" onClick={closeMenu}>
               About
             </a>
           </li>
 
-
           <li>
-            <a
-              href="#skills"
-              onClick={closeMenu}
-            >
+            <a href="#skills" onClick={closeMenu}>
               Skills
             </a>
           </li>
 
-
           <li>
-            <a
-              href="#experience"
-              onClick={closeMenu}
-            >
+            <a href="#experience" onClick={closeMenu}>
               Experience
             </a>
           </li>
 
-
           <li>
-            <a
-              href="#projects"
-              onClick={closeMenu}
-            >
+            <a href="#projects" onClick={closeMenu}>
               Projects
             </a>
           </li>
 
-
           <li>
-            <a
-              href="#contact"
-              onClick={closeMenu}
-            >
+            <a href="#contact" onClick={closeMenu}>
               Contact
             </a>
           </li>
 
         </ul>
-
 
         <button
           type="button"
@@ -238,15 +198,11 @@ function App() {
 
       </nav>
 
-
       {/* =================================
           HOME / HERO
       ================================= */}
 
-      <section
-        className="hero section"
-        id="home"
-      >
+      <section className="hero section" id="home">
 
         <div className="hero-content">
 
@@ -254,9 +210,7 @@ function App() {
             Hello, I'm
           </p>
 
-
           <h1 className="hero-name">
-
             <span className="typing-name">
               {typedName}
             </span>
@@ -265,21 +219,17 @@ function App() {
               className="typing-cursor"
               aria-hidden="true"
             ></span>
-
           </h1>
-
 
           <h2>
             Software Engineer & Python Developer
           </h2>
-
 
           <p className="hero-description">
             I develop practical and scalable web applications using
             Python, Flask, Django, React, REST APIs and modern
             database technologies.
           </p>
-
 
           <div className="hero-buttons">
 
@@ -290,7 +240,6 @@ function App() {
               View My Projects
             </a>
 
-
             <a
               href="/Manoj-CV.pdf"
               className="secondary-btn"
@@ -300,7 +249,6 @@ function App() {
             </a>
 
           </div>
-
 
           <div className="social-links">
 
@@ -315,7 +263,6 @@ function App() {
           </div>
 
         </div>
-
 
         <div className="hero-image">
 
@@ -338,7 +285,6 @@ function App() {
 
       </section>
 
-
       {/* =================================
           ABOUT
       ================================= */}
@@ -352,16 +298,13 @@ function App() {
 
           <div className="section-heading">
 
-            <p>
-              Get to know me
-            </p>
+            <p>Get to know me</p>
 
             <h2>
               About <span>Me</span>
             </h2>
 
           </div>
-
 
           <div className="about-grid">
 
@@ -371,7 +314,6 @@ function App() {
                 Software Engineer
               </h3>
 
-
               <p>
                 I am a Software Engineering professional with
                 hands-on experience in Python, Flask, Django,
@@ -379,14 +321,12 @@ function App() {
                 application development.
               </p>
 
-
               <p>
                 I enjoy developing practical software solutions,
                 building full-stack applications, working with
                 databases and solving real-world problems through
                 technology.
               </p>
-
 
               <p>
                 I am continuously improving my skills in modern
@@ -396,84 +336,36 @@ function App() {
 
             </div>
 
-
             <div className="about-details">
 
               <div className="detail-card">
-
-                <span>
-                  Name
-                </span>
-
-                <strong>
-                  Manoj Marianeason
-                </strong>
-
+                <span>Name</span>
+                <strong>Manoj Marianeason</strong>
               </div>
 
-
               <div className="detail-card">
-
-                <span>
-                  Location
-                </span>
-
-                <strong>
-                  Jaffna, Sri Lanka
-                </strong>
-
+                <span>Location</span>
+                <strong>Jaffna, Sri Lanka</strong>
               </div>
 
-
               <div className="detail-card">
-
-                <span>
-                  Specialization
-                </span>
-
-                <strong>
-                  Software Engineering
-                </strong>
-
+                <span>Specialization</span>
+                <strong>Software Engineering</strong>
               </div>
 
-
               <div className="detail-card">
-
-                <span>
-                  Focus
-                </span>
-
-                <strong>
-                  Python & Web Development
-                </strong>
-
+                <span>Focus</span>
+                <strong>Python & Web Development</strong>
               </div>
 
-
               <div className="detail-card">
-
-                <span>
-                  Availability
-                </span>
-
-                <strong>
-                  Internship / Junior Opportunities
-                </strong>
-
+                <span>Availability</span>
+                <strong>Internship / Junior Opportunities</strong>
               </div>
 
-
               <div className="detail-card">
-
-                <span>
-                  Languages
-                </span>
-
-                <strong>
-                  English & Tamil
-                </strong>
-
+                <span>Languages</span>
+                <strong>English & Tamil</strong>
               </div>
 
             </div>
@@ -483,7 +375,6 @@ function App() {
         </div>
 
       </section>
-
 
       {/* =================================
           SKILLS
@@ -508,10 +399,7 @@ function App() {
 
           </div>
 
-
           <div className="skills-grid">
-
-            {/* BACKEND */}
 
             <div className="skill-card">
 
@@ -523,20 +411,14 @@ function App() {
                 Backend Development
               </h3>
 
-
               <div className="skill-tags">
-
                 <span>Python</span>
                 <span>Flask</span>
                 <span>Django</span>
                 <span>REST APIs</span>
-
               </div>
 
             </div>
-
-
-            {/* FRONTEND */}
 
             <div className="skill-card">
 
@@ -548,20 +430,14 @@ function App() {
                 Frontend Development
               </h3>
 
-
               <div className="skill-tags">
-
                 <span>React</span>
                 <span>JavaScript</span>
                 <span>HTML</span>
                 <span>CSS</span>
-
               </div>
 
             </div>
-
-
-            {/* DATABASE */}
 
             <div className="skill-card">
 
@@ -573,18 +449,12 @@ function App() {
                 Databases
               </h3>
 
-
               <div className="skill-tags">
-
                 <span>PostgreSQL</span>
                 <span>MySQL</span>
-
               </div>
 
             </div>
-
-
-            {/* TOOLS */}
 
             <div className="skill-card">
 
@@ -596,14 +466,11 @@ function App() {
                 Development Tools
               </h3>
 
-
               <div className="skill-tags">
-
                 <span>Git</span>
                 <span>GitHub</span>
                 <span>VS Code</span>
                 <span>API Integration</span>
-
               </div>
 
             </div>
@@ -613,7 +480,6 @@ function App() {
         </div>
 
       </section>
-
 
       {/* =================================
           EXPERIENCE
@@ -638,7 +504,6 @@ function App() {
 
           </div>
 
-
           <div className="timeline">
 
             <div className="timeline-card">
@@ -646,24 +511,15 @@ function App() {
               <div className="timeline-top">
 
                 <div>
-
-                  <h3>
-                    Intern Python Developer
-                  </h3>
-
-                  <h4>
-                    Kanda-IT
-                  </h4>
-
+                  <h3>Intern Python Developer</h3>
+                  <h4>Kanda-IT</h4>
                 </div>
-
 
                 <span className="date">
                   2024 - 2025
                 </span>
 
               </div>
-
 
               <ul>
 
@@ -696,7 +552,6 @@ function App() {
 
       </section>
 
-
       {/* =================================
           PROJECTS
       ================================= */}
@@ -720,12 +575,9 @@ function App() {
 
           </div>
 
-
           <div className="projects-grid">
 
-            {/* =================================
-                NEXTUP CHATBOT
-            ================================= */}
+            {/* NEXTUP */}
 
             <article className="project-card">
 
@@ -733,11 +585,9 @@ function App() {
                 01
               </div>
 
-
               <h3>
                 NextUp Educational Chatbot
               </h3>
-
 
               <p>
                 Developed an educational guidance chatbot designed
@@ -747,17 +597,13 @@ function App() {
                 database with a custom question-and-answer dataset.
               </p>
 
-
               <div className="project-tags">
-
                 <span>React</span>
                 <span>Django</span>
                 <span>Python</span>
                 <span>PostgreSQL</span>
                 <span>Machine Learning</span>
-
               </div>
-
 
               <div className="project-links">
 
@@ -773,10 +619,7 @@ function App() {
 
             </article>
 
-
-            {/* =================================
-                WEATHER PROJECT
-            ================================= */}
+            {/* WEATHER */}
 
             <article className="project-card">
 
@@ -784,11 +627,9 @@ function App() {
                 02
               </div>
 
-
               <h3>
                 Weather Prediction Application
               </h3>
-
 
               <p>
                 Developed a weather prediction web application
@@ -797,15 +638,11 @@ function App() {
                 generate predictions.
               </p>
 
-
               <div className="project-tags">
-
                 <span>Python</span>
                 <span>Flask</span>
                 <span>Machine Learning</span>
-
               </div>
-
 
               <div className="project-links">
 
@@ -821,10 +658,7 @@ function App() {
 
             </article>
 
-
-            {/* =================================
-                PORTFOLIO
-            ================================= */}
+            {/* PORTFOLIO */}
 
             <article className="project-card">
 
@@ -832,11 +666,9 @@ function App() {
                 03
               </div>
 
-
               <h3>
                 Personal Developer Portfolio
               </h3>
-
 
               <p>
                 Designed and developed a responsive developer
@@ -844,16 +676,12 @@ function App() {
                 GitHub and Netlify.
               </p>
 
-
               <div className="project-tags">
-
                 <span>React</span>
                 <span>JavaScript</span>
                 <span>CSS</span>
                 <span>Netlify</span>
-
               </div>
-
 
               <div className="project-links">
 
@@ -874,7 +702,6 @@ function App() {
         </div>
 
       </section>
-
 
       {/* =================================
           EDUCATION
@@ -899,7 +726,6 @@ function App() {
 
           </div>
 
-
           <div className="education-grid">
 
             <div className="education-card">
@@ -908,9 +734,7 @@ function App() {
                 🎓
               </div>
 
-
               <div>
-
                 <h3>
                   BEng (Hons) Software Engineering
                 </h3>
@@ -918,11 +742,9 @@ function App() {
                 <p>
                   ESOFT Metro Campus, Jaffna
                 </p>
-
               </div>
 
             </div>
-
 
             <div className="education-card">
 
@@ -930,9 +752,7 @@ function App() {
                 🎓
               </div>
 
-
               <div>
-
                 <h3>
                   Higher National Diploma in Software Engineering
                 </h3>
@@ -940,7 +760,6 @@ function App() {
                 <p>
                   BCAS Campus, Jaffna
                 </p>
-
               </div>
 
             </div>
@@ -950,7 +769,6 @@ function App() {
         </div>
 
       </section>
-
 
       {/* =================================
           CONTACT
@@ -975,7 +793,6 @@ function App() {
 
           </div>
 
-
           <div className="contact-wrapper">
 
             {/* =================================
@@ -988,7 +805,6 @@ function App() {
                 Have an opportunity or project?
               </h3>
 
-
               <p>
                 I am interested in Software Engineering,
                 Python Developer, Full-Stack Development
@@ -996,7 +812,6 @@ function App() {
                 a message and I will get back to you as soon
                 as possible.
               </p>
-
 
               <div className="contact-list">
 
@@ -1017,6 +832,33 @@ function App() {
 
                 </a>
 
+                {/* =================================
+                    PHONE NUMBERS
+                ================================= */}
+
+                <div className="contact-item">
+
+                  <span>
+                    Phone
+                  </span>
+
+                  <strong className="phone-numbers">
+
+                    <a href="tel:+94766450902">
+                      +94 76 645 0902
+                    </a>
+
+                    <span className="phone-divider">
+                      /
+                    </span>
+
+                    <a href="tel:+94726050902">
+                      +94 72 605 0902
+                    </a>
+
+                  </strong>
+
+                </div>
 
                 {/* LOCATION */}
 
@@ -1031,7 +873,6 @@ function App() {
                   </strong>
 
                 </div>
-
 
                 {/* GITHUB */}
 
@@ -1056,7 +897,6 @@ function App() {
 
             </div>
 
-
             {/* =================================
                 NETLIFY CONTACT FORM
             ================================= */}
@@ -1071,22 +911,14 @@ function App() {
                 className="contact-form"
                 onSubmit={handleContactSubmit}
               >
+
                 <input
                   type="hidden"
                   name="form-name"
                   value="contact"
                 />
 
-                {/*
-                  Netlify requires this hidden field.
-                  The value MUST exactly match
-                  the form name.
-                */}
-
-
-                {/* =================================
-                    HONEYPOT SPAM PROTECTION
-                ================================= */}
+                {/* HONEYPOT */}
 
                 <p className="hidden-field">
 
@@ -1104,10 +936,7 @@ function App() {
 
                 </p>
 
-
-                {/* =================================
-                    NAME + EMAIL
-                ================================= */}
+                {/* NAME + EMAIL */}
 
                 <div className="form-row">
 
@@ -1116,7 +945,6 @@ function App() {
                     <label htmlFor="name">
                       Your Name
                     </label>
-
 
                     <input
                       type="text"
@@ -1131,13 +959,11 @@ function App() {
 
                   </div>
 
-
                   <div className="form-group">
 
                     <label htmlFor="email">
                       Your Email
                     </label>
-
 
                     <input
                       type="email"
@@ -1154,17 +980,13 @@ function App() {
 
                 </div>
 
-
-                {/* =================================
-                    SUBJECT
-                ================================= */}
+                {/* SUBJECT */}
 
                 <div className="form-group">
 
                   <label htmlFor="subject">
                     Subject
                   </label>
-
 
                   <input
                     type="text"
@@ -1178,17 +1000,13 @@ function App() {
 
                 </div>
 
-
-                {/* =================================
-                    MESSAGE
-                ================================= */}
+                {/* MESSAGE */}
 
                 <div className="form-group">
 
                   <label htmlFor="message">
                     Message
                   </label>
-
 
                   <textarea
                     id="message"
@@ -1202,27 +1020,19 @@ function App() {
 
                 </div>
 
-
-                {/* =================================
-                    SUBMIT BUTTON
-                ================================= */}
+                {/* SUBMIT */}
 
                 <button
                   type="submit"
                   className="contact-submit-btn"
                   disabled={isSubmitting}
                 >
-
                   {isSubmitting
                     ? "Sending..."
                     : "Send Message"}
-
                 </button>
 
-
-                {/* =================================
-                    SUCCESS MESSAGE
-                ================================= */}
+                {/* SUCCESS */}
 
                 {formStatus === "success" && (
 
@@ -1236,10 +1046,7 @@ function App() {
 
                 )}
 
-
-                {/* =================================
-                    ERROR MESSAGE
-                ================================= */}
+                {/* ERROR */}
 
                 {formStatus === "error" && (
 
@@ -1263,7 +1070,6 @@ function App() {
 
       </section>
 
-
       {/* =================================
           FOOTER
       ================================= */}
@@ -1276,11 +1082,9 @@ function App() {
             Mano<span>.</span>
           </div>
 
-
           <p>
             © 2026 Manoj Marianeason. Built with React.
           </p>
-
 
           <a href="#home">
             Back to top ↑
