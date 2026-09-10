@@ -76,10 +76,8 @@ textarea {
 
 .logo {
   color: white;
-
   font-size: 30px;
   font-weight: 700;
-
   text-decoration: none;
 }
 
@@ -90,9 +88,7 @@ textarea {
 .nav-links {
   display: flex;
   align-items: center;
-
   gap: 32px;
-
   list-style: none;
 }
 
@@ -283,7 +279,6 @@ textarea {
 }
 
 @keyframes cursorBlink {
-
   0%,
   45% {
     opacity: 1;
@@ -293,7 +288,6 @@ textarea {
   100% {
     opacity: 0;
   }
-
 }
 
 
@@ -434,7 +428,7 @@ textarea {
 
 
 /* =====================================
-   HERO PROFILE PHOTO
+   DESKTOP PROFILE PHOTO
 ===================================== */
 
 .hero-image {
@@ -443,7 +437,7 @@ textarea {
   width: 40%;
 
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
 
   z-index: 3;
@@ -453,13 +447,11 @@ textarea {
   position: relative;
 
   width: 100%;
-  max-width: 520px;
+  max-width: 480px;
 
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-
-  overflow: hidden;
 
   isolation: isolate;
 }
@@ -470,24 +462,24 @@ textarea {
   position: absolute;
 
   left: 50%;
-  bottom: 30px;
+  top: 50%;
 
   width: 430px;
   height: 430px;
 
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 
   border-radius: 50%;
 
   background:
     radial-gradient(
       circle,
-      rgba(56, 189, 248, 0.2) 0%,
-      rgba(99, 102, 241, 0.08) 40%,
+      rgba(56, 189, 248, 0.22) 0%,
+      rgba(99, 102, 241, 0.08) 42%,
       transparent 72%
     );
 
-  filter: blur(45px);
+  filter: blur(48px);
 
   z-index: -2;
 
@@ -500,21 +492,21 @@ textarea {
   position: absolute;
 
   left: 50%;
-  bottom: 0;
+  bottom: 3%;
 
-  width: 85%;
-  height: 38%;
+  width: 75%;
+  height: 22%;
 
   transform: translateX(-50%);
 
   background:
     radial-gradient(
       ellipse at center,
-      rgba(56, 189, 248, 0.13),
-      transparent 70%
+      rgba(56, 189, 248, 0.18),
+      transparent 72%
     );
 
-  filter: blur(35px);
+  filter: blur(32px);
 
   z-index: 0;
 
@@ -527,7 +519,7 @@ textarea {
   display: block;
 
   width: 100%;
-  max-width: 520px;
+  max-width: 480px;
 
   height: auto;
 
@@ -538,24 +530,22 @@ textarea {
   z-index: 1;
 
   -webkit-mask-image:
-    linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(0, 0, 0, 0.9) 5%,
-      black 14%,
-      black 72%,
-      rgba(0, 0, 0, 0.85) 84%,
+    radial-gradient(
+      ellipse 78% 88% at 50% 46%,
+      black 52%,
+      rgba(0, 0, 0, 0.96) 64%,
+      rgba(0, 0, 0, 0.72) 76%,
+      rgba(0, 0, 0, 0.25) 89%,
       transparent 100%
     );
 
   mask-image:
-    linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(0, 0, 0, 0.9) 5%,
-      black 14%,
-      black 72%,
-      rgba(0, 0, 0, 0.85) 84%,
+    radial-gradient(
+      ellipse 78% 88% at 50% 46%,
+      black 52%,
+      rgba(0, 0, 0, 0.96) 64%,
+      rgba(0, 0, 0, 0.72) 76%,
+      rgba(0, 0, 0, 0.25) 89%,
       transparent 100%
     );
 
@@ -563,7 +553,7 @@ textarea {
     brightness(0.9)
     contrast(1.04)
     saturate(0.92)
-    drop-shadow(0 25px 35px rgba(0, 0, 0, 0.45));
+    drop-shadow(0 24px 34px rgba(0, 0, 0, 0.45));
 
   animation:
     imageEntrance 1.2s ease 0.2s forwards,
@@ -577,27 +567,24 @@ textarea {
 .profile-overlay {
   position: absolute;
 
-  inset: 0;
+  inset: -2px;
 
   background:
     linear-gradient(
       to right,
-      #08111f 0%,
-      rgba(8, 17, 31, 0.95) 2%,
-      rgba(8, 17, 31, 0.58) 9%,
+      rgba(8, 17, 31, 0.82) 0%,
+      rgba(8, 17, 31, 0.28) 10%,
       transparent 24%,
       transparent 76%,
-      rgba(8, 17, 31, 0.48) 90%,
-      rgba(8, 17, 31, 0.92) 98%,
-      #08111f 100%
+      rgba(8, 17, 31, 0.28) 90%,
+      rgba(8, 17, 31, 0.82) 100%
     ),
     linear-gradient(
       to bottom,
-      rgba(8, 17, 31, 0.1) 0%,
-      transparent 18%,
-      transparent 58%,
-      rgba(8, 17, 31, 0.2) 72%,
-      rgba(8, 17, 31, 0.72) 88%,
+      rgba(8, 17, 31, 0.22) 0%,
+      transparent 14%,
+      transparent 66%,
+      rgba(8, 17, 31, 0.38) 82%,
       #08111f 100%
     );
 
@@ -608,7 +595,7 @@ textarea {
 
 .profile-photo:hover {
   transform:
-    translateY(-7px)
+    translateY(-6px)
     scale(1.01);
 
   filter:
@@ -624,12 +611,11 @@ textarea {
 ===================================== */
 
 @keyframes imageEntrance {
-
   from {
     opacity: 0;
 
     transform:
-      translateY(40px)
+      translateY(35px)
       scale(0.97);
 
     filter:
@@ -649,13 +635,11 @@ textarea {
       brightness(0.9)
       contrast(1.04)
       saturate(0.92)
-      drop-shadow(0 25px 35px rgba(0, 0, 0, 0.45));
+      drop-shadow(0 24px 34px rgba(0, 0, 0, 0.45));
   }
-
 }
 
 @keyframes imageFloat {
-
   0%,
   100% {
     transform: translateY(0);
@@ -664,17 +648,15 @@ textarea {
   50% {
     transform: translateY(-7px);
   }
-
 }
 
 @keyframes imageGlow {
-
   0%,
   100% {
-    opacity: 0.4;
+    opacity: 0.45;
 
     transform:
-      translateX(-50%)
+      translate(-50%, -50%)
       scale(0.95);
   }
 
@@ -682,14 +664,12 @@ textarea {
     opacity: 0.85;
 
     transform:
-      translateX(-50%)
+      translate(-50%, -50%)
       scale(1.05);
   }
-
 }
 
 @keyframes fadeUp {
-
   from {
     opacity: 0;
 
@@ -701,7 +681,6 @@ textarea {
 
     transform: translateY(0);
   }
-
 }
 
 
@@ -751,8 +730,7 @@ textarea {
 .about-card {
   padding: 35px;
 
-  border:
-    1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 
   border-radius: 16px;
 
@@ -766,8 +744,7 @@ textarea {
 .about-card:hover {
   transform: translateY(-4px);
 
-  border-color:
-    rgba(56, 189, 248, 0.3);
+  border-color: rgba(56, 189, 248, 0.3);
 }
 
 .about-card h3 {
@@ -797,8 +774,7 @@ textarea {
 .detail-card {
   padding: 22px;
 
-  border:
-    1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 
   border-radius: 12px;
 
@@ -812,8 +788,7 @@ textarea {
 .detail-card:hover {
   transform: translateY(-4px);
 
-  border-color:
-    rgba(56, 189, 248, 0.3);
+  border-color: rgba(56, 189, 248, 0.3);
 }
 
 .detail-card span {
@@ -848,8 +823,7 @@ textarea {
 .skill-card {
   padding: 30px;
 
-  border:
-    1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 
   border-radius: 16px;
 
@@ -864,8 +838,7 @@ textarea {
 .skill-card:hover {
   transform: translateY(-6px);
 
-  border-color:
-    rgba(56, 189, 248, 0.5);
+  border-color: rgba(56, 189, 248, 0.5);
 
   box-shadow:
     0 15px 35px rgba(0, 0, 0, 0.2);
@@ -936,8 +909,7 @@ textarea {
 .timeline-card {
   padding: 35px;
 
-  border-left:
-    4px solid #38bdf8;
+  border-left: 4px solid #38bdf8;
 
   border-radius: 16px;
 
@@ -1015,8 +987,7 @@ textarea {
 
   padding: 32px;
 
-  border:
-    1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 
   border-radius: 16px;
 
@@ -1031,8 +1002,7 @@ textarea {
 .project-card:hover {
   transform: translateY(-7px);
 
-  border-color:
-    rgba(56, 189, 248, 0.5);
+  border-color: rgba(56, 189, 248, 0.5);
 
   box-shadow:
     0 18px 40px rgba(0, 0, 0, 0.22);
@@ -1114,8 +1084,7 @@ textarea {
 
   padding: 25px 30px;
 
-  border:
-    1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 
   border-radius: 14px;
 
@@ -1129,8 +1098,7 @@ textarea {
 .education-card:hover {
   transform: translateY(-4px);
 
-  border-color:
-    rgba(56, 189, 248, 0.3);
+  border-color: rgba(56, 189, 248, 0.3);
 }
 
 .education-icon {
@@ -1195,8 +1163,7 @@ textarea {
 
   padding: 15px 18px;
 
-  border:
-    1px solid transparent;
+  border: 1px solid transparent;
 
   border-radius: 10px;
 
@@ -1212,8 +1179,7 @@ textarea {
 .contact-item:hover {
   transform: translateY(-3px);
 
-  border-color:
-    rgba(56, 189, 248, 0.25);
+  border-color: rgba(56, 189, 248, 0.25);
 }
 
 .contact-item span {
@@ -1226,6 +1192,37 @@ textarea {
   color: #e2e8f0;
 
   word-break: break-word;
+}
+
+
+/* =====================================
+   PHONE NUMBERS
+===================================== */
+
+.phone-numbers {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.phone-numbers a {
+  color: #e2e8f0;
+
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.phone-numbers a:hover {
+  color: #38bdf8;
+}
+
+.phone-divider {
+  color: #64748b;
 }
 
 
@@ -1362,7 +1359,9 @@ textarea {
 }
 
 
-/* submit button */
+/* =====================================
+   SUBMIT BUTTON
+===================================== */
 
 .contact-submit-btn {
   position: relative;
@@ -1411,7 +1410,9 @@ textarea {
 }
 
 
-/* result messages */
+/* =====================================
+   FORM RESULT MESSAGE
+===================================== */
 
 .form-message {
   margin-top: 18px;
@@ -1516,7 +1517,6 @@ textarea {
     grid-template-columns:
       repeat(2, 1fr);
   }
-
 }
 
 
@@ -1525,6 +1525,8 @@ textarea {
 ===================================== */
 
 @media (max-width: 900px) {
+
+  /* NAVBAR */
 
   .navbar {
     height: 70px;
@@ -1588,69 +1590,316 @@ textarea {
   }
 
 
-  /* HERO */
+  /* =====================================
+     MOBILE HERO
+  ===================================== */
 
   .hero {
+    min-height: auto;
+
+    display: flex;
+
     flex-direction: column;
 
     justify-content: flex-start;
 
-    gap: 28px;
+    gap: 0;
 
-    padding: 100px 20px 50px;
+    padding:
+      70px
+      0
+      55px;
 
     text-align: center;
+
+    overflow: hidden;
   }
+
+
+  /*
+     Hero content stays inside page
+     but photo becomes full width.
+  */
 
   .hero-content {
     width: 100%;
 
-    max-width: 650px;
+    max-width: 680px;
+
+    padding:
+      20px
+      22px
+      0;
+
+    margin: 0 auto;
+
+    z-index: 5;
+  }
+
+
+  /* =====================================
+     FULL-SCREEN MOBILE PHOTO
+  ===================================== */
+
+  .hero-image {
+    position: relative;
+
+    order: -1;
+
+    width: 100vw;
+
+    height: clamp(390px, 58vh, 560px);
+
+    margin: 0;
+
+    display: block;
+
+    overflow: hidden;
+
+    z-index: 2;
+  }
+
+
+  .profile-photo-wrapper {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+
+    margin: 0;
+
+    display: block;
+
+    overflow: hidden;
+
+    border-radius: 0;
+
+    isolation: isolate;
+  }
+
+
+  /*
+     Remove desktop circular glow.
+     Full-screen mobile image looks cleaner.
+  */
+
+  .profile-photo-wrapper::before {
+    display: none;
+  }
+
+
+  /*
+     Soft bottom glow before the text.
+  */
+
+  .profile-photo-wrapper::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 38%;
+
+    transform: none;
+
+    background:
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(8, 17, 31, 0.15) 22%,
+        rgba(8, 17, 31, 0.62) 67%,
+        #08111f 100%
+      );
+
+    filter: none;
+
+    z-index: 3;
+
+    pointer-events: none;
+  }
+
+
+  /*
+     This is the important part.
+
+     The photo fills the whole mobile width
+     like a professional hero background.
+  */
+
+  .profile-photo {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+
+    object-fit: cover;
+
+    /*
+       Change second percentage if you want
+       the picture slightly higher/lower.
+    */
+
+    object-position: center 38%;
+
+    border-radius: 0;
+
+    opacity: 0;
+
+    z-index: 1;
+
+    -webkit-mask-image: none;
+    mask-image: none;
+
+    filter:
+      brightness(0.82)
+      contrast(1.06)
+      saturate(0.92);
+
+    animation:
+      mobileImageEntrance 1.2s ease 0.15s forwards;
+
+    transition:
+      transform 0.5s ease,
+      filter 0.5s ease;
+  }
+
+
+  /*
+     Professional dark overlay.
+     This makes image merge with website.
+  */
+
+  .profile-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+      linear-gradient(
+        to right,
+        rgba(8, 17, 31, 0.55) 0%,
+        rgba(8, 17, 31, 0.12) 18%,
+        transparent 38%,
+        transparent 62%,
+        rgba(8, 17, 31, 0.12) 82%,
+        rgba(8, 17, 31, 0.55) 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(8, 17, 31, 0.08) 0%,
+        transparent 35%,
+        rgba(8, 17, 31, 0.12) 58%,
+        rgba(8, 17, 31, 0.5) 78%,
+        #08111f 100%
+      );
+  }
+
+
+  /*
+     Disable desktop hover/floating effect
+     on mobile.
+  */
+
+  .profile-photo:hover {
+    transform: none;
+
+    filter:
+      brightness(0.82)
+      contrast(1.06)
+      saturate(0.92);
+  }
+
+
+  @keyframes mobileImageEntrance {
+    from {
+      opacity: 0;
+
+      transform:
+        scale(1.08);
+
+      filter:
+        blur(8px)
+        brightness(0.7);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        scale(1);
+
+      filter:
+        blur(0)
+        brightness(0.82)
+        contrast(1.06)
+        saturate(0.92);
+    }
+  }
+
+
+  /* =====================================
+     MOBILE HERO TEXT
+  ===================================== */
+
+  .welcome-text {
+    margin-top: 0;
+
+    margin-bottom: 14px;
+
+    font-size: 18px;
   }
 
   .hero-name {
     width: 100%;
+
+    min-height: 58px;
 
     justify-content: center;
 
     white-space: normal;
   }
 
+  .hero h1 {
+    font-size: 38px;
+
+    margin-bottom: 12px;
+  }
+
+  .hero h2 {
+    font-size: 21px;
+
+    line-height: 1.4;
+
+    margin-bottom: 18px;
+  }
+
   .hero-description {
     margin-left: auto;
     margin-right: auto;
+
+    font-size: 16px;
+
+    line-height: 1.7;
   }
 
   .hero-buttons,
   .social-links {
     justify-content: center;
-  }
-
-
-  /* PHOTO */
-
-  .hero-image {
-    width: 100%;
-
-    order: -1;
-
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-
-  .profile-photo-wrapper {
-    max-width: 400px;
-  }
-
-  .profile-photo {
-    max-width: 400px;
-  }
-
-  .profile-photo-wrapper::before {
-    width: 320px;
-    height: 320px;
-
-    bottom: 20px;
   }
 
 
@@ -1668,7 +1917,6 @@ textarea {
 
     gap: 35px;
   }
-
 }
 
 
@@ -1697,41 +1945,115 @@ textarea {
   }
 
 
-  /* HERO */
+  /* =====================================
+     SMALL MOBILE HERO
+  ===================================== */
 
   .hero {
-    min-height: auto;
+    padding-top: 70px;
 
-    gap: 22px;
+    padding-left: 0;
+    padding-right: 0;
 
-    padding: 90px 17px 45px;
+    gap: 0;
   }
 
+
+  /*
+     Full phone width photo
+  */
+
+  .hero-image {
+    width: 100vw;
+
+    height: clamp(400px, 62vh, 520px);
+  }
+
+
+  /*
+     Keeps your whole body visually centered.
+  */
+
+  .profile-photo {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center 36%;
+  }
+
+
+  /*
+     Slightly stronger mobile fade.
+  */
+
+  .profile-overlay {
+    background:
+      linear-gradient(
+        to right,
+        rgba(8, 17, 31, 0.42) 0%,
+        rgba(8, 17, 31, 0.06) 16%,
+        transparent 34%,
+        transparent 66%,
+        rgba(8, 17, 31, 0.06) 84%,
+        rgba(8, 17, 31, 0.42) 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(8, 17, 31, 0.02) 0%,
+        transparent 42%,
+        rgba(8, 17, 31, 0.14) 61%,
+        rgba(8, 17, 31, 0.54) 80%,
+        #08111f 100%
+      );
+  }
+
+
+  .hero-content {
+    padding:
+      12px
+      18px
+      0;
+  }
+
+
   .welcome-text {
+    margin-top: 0;
+
+    margin-bottom: 12px;
+
     font-size: 17px;
   }
 
+
   .hero h1 {
-    font-size: 35px;
+    font-size: 34px;
   }
 
+
   .hero-name {
-    min-height: 78px;
+    min-height: 60px;
 
     justify-content: center;
 
     white-space: normal;
   }
 
+
   .typing-cursor {
     height: 0.8em;
   }
+
 
   .hero h2 {
     font-size: 20px;
 
     line-height: 1.4;
+
+    margin-bottom: 18px;
   }
+
 
   .hero-description {
     font-size: 15px;
@@ -1739,11 +2061,13 @@ textarea {
     line-height: 1.65;
   }
 
+
   .hero-buttons {
     flex-direction: column;
 
     align-items: center;
   }
+
 
   .primary-btn,
   .secondary-btn {
@@ -1752,24 +2076,6 @@ textarea {
     max-width: 280px;
 
     text-align: center;
-  }
-
-
-  /* PHOTO */
-
-  .profile-photo-wrapper {
-    max-width: 300px;
-  }
-
-  .profile-photo {
-    max-width: 300px;
-  }
-
-  .profile-photo-wrapper::before {
-    width: 240px;
-    height: 240px;
-
-    bottom: 10px;
   }
 
 
@@ -1813,7 +2119,7 @@ textarea {
   }
 
 
-  /* CONTACT FORM */
+  /* CONTACT */
 
   .form-row {
     grid-template-columns: 1fr;
@@ -1829,6 +2135,10 @@ textarea {
     font-size: 25px;
   }
 
+  .phone-numbers {
+    gap: 6px;
+  }
+
 
   /* FOOTER */
 
@@ -1841,7 +2151,6 @@ textarea {
 
     text-align: center;
   }
-
 }
 
 
@@ -1851,21 +2160,21 @@ textarea {
 
 @media (max-width: 380px) {
 
-  .profile-photo-wrapper {
-    max-width: 255px;
+  .hero-image {
+    height: 420px;
   }
 
   .profile-photo {
-    max-width: 255px;
+    object-position: center 35%;
   }
 
-  .profile-photo-wrapper::before {
-    width: 200px;
-    height: 200px;
+  .hero-content {
+    padding-left: 14px;
+    padding-right: 14px;
   }
 
   .hero h1 {
-    font-size: 30px;
+    font-size: 29px;
   }
 
   .hero h2 {
@@ -1873,9 +2182,8 @@ textarea {
   }
 
   .hero-name {
-    min-height: 72px;
+    min-height: 58px;
   }
-
 }
 
 
@@ -1898,5 +2206,4 @@ textarea {
 
     transition-duration: 0.01ms !important;
   }
-
 }
