@@ -1,30 +1,30 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+/* =====================================
+   CONSTANTS
+===================================== */
+
+const FULL_NAME = "Manoj Marianeason";
+
 function App() {
+  /* =====================================
+     NAVIGATION
+  ===================================== */
+
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const fullName = "Manoj Marianeason";
-  const [typedName, setTypedName] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const [formStatus, setFormStatus] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const closeMenu = () => {
     setMenuOpen(false);
   };
 
+
   /* =====================================
      TYPING ANIMATION
   ===================================== */
+
+  const [typedName, setTypedName] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const typingSpeed = isDeleting ? 70 : 120;
@@ -33,7 +33,7 @@ function App() {
 
     let timeout;
 
-    if (!isDeleting && typedName === fullName) {
+    if (!isDeleting && typedName === FULL_NAME) {
       timeout = setTimeout(() => {
         setIsDeleting(true);
       }, pauseAfterTyping);
@@ -47,51 +47,78 @@ function App() {
           ? typedName.length - 1
           : typedName.length + 1;
 
-        setTypedName(fullName.substring(0, nextLength));
+        setTypedName(FULL_NAME.substring(0, nextLength));
       }, typingSpeed);
     }
 
     return () => clearTimeout(timeout);
   }, [typedName, isDeleting]);
 
+
   /* =====================================
-     CONTACT FORM
+     CONTACT FORM STATE
+  ===================================== */
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [formStatus, setFormStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+
+  /* =====================================
+     CONTACT INPUT CHANGE
   ===================================== */
 
   const handleContactChange = (e) => {
     const { name, value } = e.target;
 
-    setFormData((prev) => ({
-      ...prev,
+    setFormData((previousData) => ({
+      ...previousData,
       [name]: value,
     }));
+
+    /*
+      Remove previous success/error message
+      when the visitor starts typing again.
+    */
+    if (formStatus) {
+      setFormStatus("");
+    }
   };
+
+
+  /* =====================================
+     NETLIFY CONTACT SUBMISSION
+  ===================================== */
 
   const handleContactSubmit = async (e) => {
     e.preventDefault();
+
+    const form = e.currentTarget;
 
     setIsSubmitting(true);
     setFormStatus("");
 
     try {
-      const encodedData = new URLSearchParams({
-        "form-name": "contact",
-        name: formData.name,
-        email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-      }).toString();
+      const formDataToSend = new FormData(form);
 
       const response = await fetch("/", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: encodedData,
+        body: new URLSearchParams(formDataToSend).toString(),
       });
 
       if (!response.ok) {
-        throw new Error("Form submission failed");
+        throw new Error(
+          `Netlify form submission failed with status ${response.status}`
+        );
       }
 
       setFormStatus("success");
@@ -103,12 +130,13 @@ function App() {
         message: "",
       });
     } catch (error) {
-      console.error("Contact form error:", error);
+      console.error("Contact form submission error:", error);
       setFormStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
+
 
   return (
     <div className="portfolio">
@@ -118,58 +146,96 @@ function App() {
       ================================= */}
 
       <nav className="navbar">
-        <a href="#home" className="logo" onClick={closeMenu}>
+
+        <a
+          href="#home"
+          className="logo"
+          onClick={closeMenu}
+        >
           Mano<span>.</span>
         </a>
 
-        <ul className={menuOpen ? "nav-links active" : "nav-links"}>
+
+        <ul
+          className={
+            menuOpen
+              ? "nav-links active"
+              : "nav-links"
+          }
+        >
 
           <li>
-            <a href="#home" onClick={closeMenu}>
+            <a
+              href="#home"
+              onClick={closeMenu}
+            >
               Home
             </a>
           </li>
 
+
           <li>
-            <a href="#about" onClick={closeMenu}>
+            <a
+              href="#about"
+              onClick={closeMenu}
+            >
               About
             </a>
           </li>
 
+
           <li>
-            <a href="#skills" onClick={closeMenu}>
+            <a
+              href="#skills"
+              onClick={closeMenu}
+            >
               Skills
             </a>
           </li>
 
+
           <li>
-            <a href="#experience" onClick={closeMenu}>
+            <a
+              href="#experience"
+              onClick={closeMenu}
+            >
               Experience
             </a>
           </li>
 
+
           <li>
-            <a href="#projects" onClick={closeMenu}>
+            <a
+              href="#projects"
+              onClick={closeMenu}
+            >
               Projects
             </a>
           </li>
 
+
           <li>
-            <a href="#contact" onClick={closeMenu}>
+            <a
+              href="#contact"
+              onClick={closeMenu}
+            >
               Contact
             </a>
           </li>
 
         </ul>
 
+
         <button
+          type="button"
           className="menu-toggle"
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => setMenuOpen((previous) => !previous)}
           aria-label="Toggle navigation menu"
           aria-expanded={menuOpen}
         >
           {menuOpen ? "✕" : "☰"}
         </button>
+
       </nav>
 
 
@@ -177,7 +243,10 @@ function App() {
           HOME / HERO
       ================================= */}
 
-      <section className="hero section" id="home">
+      <section
+        className="hero section"
+        id="home"
+      >
 
         <div className="hero-content">
 
@@ -185,23 +254,32 @@ function App() {
             Hello, I'm
           </p>
 
+
           <h1 className="hero-name">
+
             <span className="typing-name">
               {typedName}
             </span>
 
-            <span className="typing-cursor"></span>
+            <span
+              className="typing-cursor"
+              aria-hidden="true"
+            ></span>
+
           </h1>
+
 
           <h2>
             Software Engineer & Python Developer
           </h2>
+
 
           <p className="hero-description">
             I develop practical and scalable web applications using
             Python, Flask, Django, React, REST APIs and modern
             database technologies.
           </p>
+
 
           <div className="hero-buttons">
 
@@ -211,6 +289,7 @@ function App() {
             >
               View My Projects
             </a>
+
 
             <a
               href="/Manoj-CV.pdf"
@@ -233,14 +312,6 @@ function App() {
               GitHub
             </a>
 
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-
           </div>
 
         </div>
@@ -256,7 +327,10 @@ function App() {
               className="profile-photo"
             />
 
-            <div className="profile-overlay"></div>
+            <div
+              className="profile-overlay"
+              aria-hidden="true"
+            ></div>
 
           </div>
 
@@ -269,7 +343,10 @@ function App() {
           ABOUT
       ================================= */}
 
-      <section className="section about-section" id="about">
+      <section
+        className="section about-section"
+        id="about"
+      >
 
         <div className="section-container">
 
@@ -294,6 +371,7 @@ function App() {
                 Software Engineer
               </h3>
 
+
               <p>
                 I am a Software Engineering professional with
                 hands-on experience in Python, Flask, Django,
@@ -301,12 +379,14 @@ function App() {
                 application development.
               </p>
 
+
               <p>
                 I enjoy developing practical software solutions,
                 building full-stack applications, working with
                 databases and solving real-world problems through
                 technology.
               </p>
+
 
               <p>
                 I am continuously improving my skills in modern
@@ -321,7 +401,9 @@ function App() {
 
               <div className="detail-card">
 
-                <span>Name</span>
+                <span>
+                  Name
+                </span>
 
                 <strong>
                   Manoj Marianeason
@@ -332,7 +414,9 @@ function App() {
 
               <div className="detail-card">
 
-                <span>Location</span>
+                <span>
+                  Location
+                </span>
 
                 <strong>
                   Jaffna, Sri Lanka
@@ -343,7 +427,9 @@ function App() {
 
               <div className="detail-card">
 
-                <span>Specialization</span>
+                <span>
+                  Specialization
+                </span>
 
                 <strong>
                   Software Engineering
@@ -354,7 +440,9 @@ function App() {
 
               <div className="detail-card">
 
-                <span>Focus</span>
+                <span>
+                  Focus
+                </span>
 
                 <strong>
                   Python & Web Development
@@ -365,7 +453,9 @@ function App() {
 
               <div className="detail-card">
 
-                <span>Availability</span>
+                <span>
+                  Availability
+                </span>
 
                 <strong>
                   Internship / Junior Opportunities
@@ -376,7 +466,9 @@ function App() {
 
               <div className="detail-card">
 
-                <span>Languages</span>
+                <span>
+                  Languages
+                </span>
 
                 <strong>
                   English & Tamil
@@ -397,7 +489,10 @@ function App() {
           SKILLS
       ================================= */}
 
-      <section className="section skills-section" id="skills">
+      <section
+        className="section skills-section"
+        id="skills"
+      >
 
         <div className="section-container">
 
@@ -416,6 +511,8 @@ function App() {
 
           <div className="skills-grid">
 
+            {/* BACKEND */}
+
             <div className="skill-card">
 
               <div className="skill-icon">
@@ -425,6 +522,7 @@ function App() {
               <h3>
                 Backend Development
               </h3>
+
 
               <div className="skill-tags">
 
@@ -438,6 +536,8 @@ function App() {
             </div>
 
 
+            {/* FRONTEND */}
+
             <div className="skill-card">
 
               <div className="skill-icon">
@@ -447,6 +547,7 @@ function App() {
               <h3>
                 Frontend Development
               </h3>
+
 
               <div className="skill-tags">
 
@@ -460,6 +561,8 @@ function App() {
             </div>
 
 
+            {/* DATABASE */}
+
             <div className="skill-card">
 
               <div className="skill-icon">
@@ -469,6 +572,7 @@ function App() {
               <h3>
                 Databases
               </h3>
+
 
               <div className="skill-tags">
 
@@ -480,6 +584,8 @@ function App() {
             </div>
 
 
+            {/* TOOLS */}
+
             <div className="skill-card">
 
               <div className="skill-icon">
@@ -489,6 +595,7 @@ function App() {
               <h3>
                 Development Tools
               </h3>
+
 
               <div className="skill-tags">
 
@@ -550,6 +657,7 @@ function App() {
 
                 </div>
 
+
                 <span className="date">
                   2024 - 2025
                 </span>
@@ -593,7 +701,10 @@ function App() {
           PROJECTS
       ================================= */}
 
-      <section className="section projects-section" id="projects">
+      <section
+        className="section projects-section"
+        id="projects"
+      >
 
         <div className="section-container">
 
@@ -612,7 +723,9 @@ function App() {
 
           <div className="projects-grid">
 
-            {/* NEXTUP CHATBOT */}
+            {/* =================================
+                NEXTUP CHATBOT
+            ================================= */}
 
             <article className="project-card">
 
@@ -620,9 +733,11 @@ function App() {
                 01
               </div>
 
+
               <h3>
                 NextUp Educational Chatbot
               </h3>
+
 
               <p>
                 Developed an educational guidance chatbot designed
@@ -631,6 +746,7 @@ function App() {
                 uses a React frontend, Django backend and PostgreSQL
                 database with a custom question-and-answer dataset.
               </p>
+
 
               <div className="project-tags">
 
@@ -641,6 +757,7 @@ function App() {
                 <span>Machine Learning</span>
 
               </div>
+
 
               <div className="project-links">
 
@@ -657,7 +774,9 @@ function App() {
             </article>
 
 
-            {/* WEATHER PROJECT */}
+            {/* =================================
+                WEATHER PROJECT
+            ================================= */}
 
             <article className="project-card">
 
@@ -665,9 +784,11 @@ function App() {
                 02
               </div>
 
+
               <h3>
                 Weather Prediction Application
               </h3>
+
 
               <p>
                 Developed a weather prediction web application
@@ -676,6 +797,7 @@ function App() {
                 generate predictions.
               </p>
 
+
               <div className="project-tags">
 
                 <span>Python</span>
@@ -683,6 +805,7 @@ function App() {
                 <span>Machine Learning</span>
 
               </div>
+
 
               <div className="project-links">
 
@@ -699,7 +822,9 @@ function App() {
             </article>
 
 
-            {/* PORTFOLIO PROJECT */}
+            {/* =================================
+                PORTFOLIO
+            ================================= */}
 
             <article className="project-card">
 
@@ -707,15 +832,18 @@ function App() {
                 03
               </div>
 
+
               <h3>
                 Personal Developer Portfolio
               </h3>
+
 
               <p>
                 Designed and developed a responsive developer
                 portfolio using React and deployed it using
                 GitHub and Netlify.
               </p>
+
 
               <div className="project-tags">
 
@@ -725,6 +853,7 @@ function App() {
                 <span>Netlify</span>
 
               </div>
+
 
               <div className="project-links">
 
@@ -751,7 +880,10 @@ function App() {
           EDUCATION
       ================================= */}
 
-      <section className="section education-section">
+      <section
+        className="section education-section"
+        id="education"
+      >
 
         <div className="section-container">
 
@@ -776,6 +908,7 @@ function App() {
                 🎓
               </div>
 
+
               <div>
 
                 <h3>
@@ -796,6 +929,7 @@ function App() {
               <div className="education-icon">
                 🎓
               </div>
+
 
               <div>
 
@@ -844,13 +978,16 @@ function App() {
 
           <div className="contact-wrapper">
 
-            {/* LEFT */}
+            {/* =================================
+                CONTACT INFORMATION
+            ================================= */}
 
             <div className="contact-content">
 
               <h3>
                 Have an opportunity or project?
               </h3>
+
 
               <p>
                 I am interested in Software Engineering,
@@ -862,6 +999,8 @@ function App() {
 
 
               <div className="contact-list">
+
+                {/* EMAIL */}
 
                 <a
                   href="mailto:marianeasonmanoj968@gmail.com"
@@ -879,6 +1018,8 @@ function App() {
                 </a>
 
 
+                {/* LOCATION */}
+
                 <div className="contact-item">
 
                   <span>
@@ -891,6 +1032,8 @@ function App() {
 
                 </div>
 
+
+                {/* GITHUB */}
 
                 <a
                   href="https://github.com/ManoCode-hub"
@@ -914,7 +1057,9 @@ function App() {
             </div>
 
 
-            {/* RIGHT - FORM */}
+            {/* =================================
+                NETLIFY CONTACT FORM
+            ================================= */}
 
             <div className="contact-form-wrapper">
 
@@ -926,26 +1071,43 @@ function App() {
                 className="contact-form"
                 onSubmit={handleContactSubmit}
               >
-
                 <input
                   type="hidden"
                   name="form-name"
                   value="contact"
                 />
 
+                {/*
+                  Netlify requires this hidden field.
+                  The value MUST exactly match
+                  the form name.
+                */}
+
+
+                {/* =================================
+                    HONEYPOT SPAM PROTECTION
+                ================================= */}
 
                 <p className="hidden-field">
 
                   <label>
-                    Don't fill this out:
+                    Do not fill this field:
 
                     <input
+                      type="text"
                       name="bot-field"
+                      tabIndex="-1"
+                      autoComplete="off"
                     />
+
                   </label>
 
                 </p>
 
+
+                {/* =================================
+                    NAME + EMAIL
+                ================================= */}
 
                 <div className="form-row">
 
@@ -955,6 +1117,7 @@ function App() {
                       Your Name
                     </label>
 
+
                     <input
                       type="text"
                       id="name"
@@ -962,6 +1125,7 @@ function App() {
                       placeholder="Enter your name"
                       value={formData.name}
                       onChange={handleContactChange}
+                      autoComplete="name"
                       required
                     />
 
@@ -974,6 +1138,7 @@ function App() {
                       Your Email
                     </label>
 
+
                     <input
                       type="email"
                       id="email"
@@ -981,6 +1146,7 @@ function App() {
                       placeholder="Enter your email"
                       value={formData.email}
                       onChange={handleContactChange}
+                      autoComplete="email"
                       required
                     />
 
@@ -989,11 +1155,16 @@ function App() {
                 </div>
 
 
+                {/* =================================
+                    SUBJECT
+                ================================= */}
+
                 <div className="form-group">
 
                   <label htmlFor="subject">
                     Subject
                   </label>
+
 
                   <input
                     type="text"
@@ -1008,11 +1179,16 @@ function App() {
                 </div>
 
 
+                {/* =================================
+                    MESSAGE
+                ================================= */}
+
                 <div className="form-group">
 
                   <label htmlFor="message">
                     Message
                   </label>
+
 
                   <textarea
                     id="message"
@@ -1027,6 +1203,10 @@ function App() {
                 </div>
 
 
+                {/* =================================
+                    SUBMIT BUTTON
+                ================================= */}
+
                 <button
                   type="submit"
                   className="contact-submit-btn"
@@ -1040,18 +1220,34 @@ function App() {
                 </button>
 
 
+                {/* =================================
+                    SUCCESS MESSAGE
+                ================================= */}
+
                 {formStatus === "success" && (
 
-                  <div className="form-message success-message">
+                  <div
+                    className="form-message success-message"
+                    role="status"
+                    aria-live="polite"
+                  >
                     ✓ Thank you! Your message has been sent successfully.
                   </div>
 
                 )}
 
 
+                {/* =================================
+                    ERROR MESSAGE
+                ================================= */}
+
                 {formStatus === "error" && (
 
-                  <div className="form-message error-message">
+                  <div
+                    className="form-message error-message"
+                    role="alert"
+                    aria-live="assertive"
+                  >
                     Something went wrong. Please try again or email me directly.
                   </div>
 
@@ -1080,9 +1276,11 @@ function App() {
             Mano<span>.</span>
           </div>
 
+
           <p>
             © 2026 Manoj Marianeason. Built with React.
           </p>
+
 
           <a href="#home">
             Back to top ↑
